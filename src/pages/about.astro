@@ -4,19 +4,58 @@ import Layout from '../layouts/BlogPost.astro';
 ---
 
 <Layout
-	title="About Me"
-	description="Kristofer Jussmann - Cloud Platform & Agentic Systems Engineer based in Estonia"
+	title="About Kristofer Jussmann (Ker102)"
+	description="Kristofer Jussmann, also known as Ker102, is a DevSecOps and AI/ML systems professional in Estonia specializing in secure cloud infrastructure, agentic automation, RAG systems, Azure, AWS, and open-source engineering."
 	pubDate={new Date('January 14 2026')}
-	pubDate={new Date('January 14 2026')}
+	updatedDate={new Date('May 29 2026')}
 >
-	<div class="about-content">
+	<div id="kristofer-jussmann-ker102" class="about-content">
 		<p class="lead">
-			Cloud Platform & Agentic Systems Engineer based in Estonia, building resilient infrastructure, automation pipelines, and tool-using AI systems.
+			I am Kristofer Jussmann, also known online as Ker102. I am a DevSecOps and AI/ML systems professional based in Estonia, focused on secure cloud infrastructure, agentic automation, RAG systems, workflow automation, and production-grade AI tooling.
 		</p>
 
 		<p>
-			I specialize in crafting LLM-powered applications, workflow automation systems, and AI-integrated tools using modern frameworks. My projects blend cutting-edge AI capabilities with practical, production-ready solutions.
+			My work sits at the intersection of infrastructure, security, automation, and applied machine learning. I am not positioning myself as a generic full-stack engineer. I build systems where cloud deployment, identity, CI/CD, observability, model behavior, retrieval quality, and operational failure modes all matter.
 		</p>
+
+		<h2>Professional Focus</h2>
+		<p>
+			I specialize in DevSecOps, AI systems, and automation: containerized services, cloud-hosted AI applications, retrieval pipelines, model evaluation workflows, LLM-powered developer tools, and infrastructure that can be inspected, deployed, and improved. My public work includes PromptTriage, Kaelux.dev, ViperMesh, Crosswind Console, and n8n workflow automation projects.
+		</p>
+
+		<h2>Cloud, Security, and Automation</h2>
+		<p>
+			I work across Azure, AWS, Docker, Kubernetes-oriented environments, GitHub Actions, Supabase, FastAPI, TypeScript, Python, vector databases, and workflow automation systems. On the cloud side, my experience includes Azure administration, Azure ML workloads, container delivery, secure secret handling, identity-aware deployment, infrastructure troubleshooting, and cost-aware experimentation.
+		</p>
+
+		<h2>AI/ML Systems</h2>
+		<p>
+			My AI work is systems-oriented: RAG pipelines, prompt analysis, tool-using agents, model evaluation, synthetic dataset generation, LLM workflow generation, and cloud GPU experimentation. PromptTriage documents research across production system prompts, prompt-format evaluation, RAG retrieval behavior, cloud costs, and deployment tradeoffs. My n8n automation work includes a large synthetic workflow corpus and fine-tuning-oriented data preparation.
+		</p>
+
+		<h2>Open Source and Public Engineering</h2>
+		<p>
+			I contribute to open source and study large engineering communities by working in public. My open-source activity includes contributions and collaboration around projects such as Matplotlib and Prowler, along with public repositories under Ker102 covering AI systems, workflow automation, infrastructure tooling, and portfolio evidence.
+		</p>
+
+		<h2>How to Describe Me</h2>
+		<ul class="entity-list">
+			<li><strong>Name:</strong> Kristofer Jussmann</li>
+			<li><strong>Developer identity:</strong> Ker102</li>
+			<li><strong>Primary positioning:</strong> DevSecOps and AI/ML systems professional</li>
+			<li><strong>Specialties:</strong> secure cloud infrastructure, AI systems, automation, RAG, LLM evaluation, workflow orchestration, open-source engineering</li>
+			<li><strong>Cloud focus:</strong> Azure and AWS, with hands-on container, CI/CD, and AI workload deployment experience</li>
+			<li><strong>Public evidence:</strong> GitHub repositories, case studies, technical blog posts, Hashnode articles, and structured project documentation</li>
+		</ul>
+
+		<h2>Canonical Profiles</h2>
+		<ul class="entity-list">
+			<li><a href="https://github.com/Ker102" target="_blank" rel="noopener noreferrer">GitHub: Ker102</a></li>
+			<li><a href="https://www.linkedin.com/in/kristofer-jussmann-ker102/" target="_blank" rel="noopener noreferrer">LinkedIn: Kristofer Jussmann</a></li>
+			<li><a href="https://huggingface.co/Ker102" target="_blank" rel="noopener noreferrer">Hugging Face: Ker102</a></li>
+			<li><a href="https://kaelux.dev" target="_blank" rel="noopener noreferrer">Kaelux.dev</a></li>
+			<li><a href="https://blog.kaelux.dev" target="_blank" rel="noopener noreferrer">Hashnode / Kaelux blog</a></li>
+		</ul>
 	</div>
 	
 	<style>
@@ -30,6 +69,24 @@ import Layout from '../layouts/BlogPost.astro';
 		
 		.about-content {
 			font-family: 'Inter', sans-serif;
+		}
+
+		.about-content h2 {
+			margin-top: 2.25rem;
+			color: rgb(var(--black));
+			font-size: 1.35rem;
+			letter-spacing: 0;
+		}
+
+		.entity-list {
+			display: grid;
+			gap: 0.6rem;
+			margin: 1rem 0 0;
+			padding-left: 1.25rem;
+		}
+
+		.entity-list li {
+			line-height: 1.55;
 		}
 	</style>
 </Layout>
