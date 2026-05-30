@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     if: |
       github.event.pull_request.user.login == 'dependabot[bot]' &&
-      github.repository == 'Ker102/Ker102blog' &&
+      github.repository == 'Ker102/kristoferjussmann.me' &&
       github.event.pull_request.base.ref == 'main' &&
       github.event.pull_request.draft == false
     steps:
