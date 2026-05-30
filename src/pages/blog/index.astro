@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
@@ -12,7 +12,7 @@ const posts = (await getCollection('blog')).sort(
 
 const postsWithContent = await Promise.all(
 	posts.map(async (post) => {
-		const { Content } = await post.render();
+		const { Content } = await render(post);
 		return { ...post, Content };
 	}),
 );
@@ -323,7 +323,7 @@ const postsWithContent = await Promise.all(
 				<ul>
 					{posts.map((post) => (
 						<li>
-							<a href={`#${post.slug}`} data-post-link>
+							<a href={`#${post.id}`} data-post-link>
 								<span class="recent-title">{post.data.title}</span>
 								<span class="recent-date"><FormattedDate date={post.data.pubDate} /></span>
 							</a>
@@ -334,8 +334,8 @@ const postsWithContent = await Promise.all(
 			<main>
 				<section class="posts">
 					{
-						postsWithContent.map(({ slug, data, Content }) => (
-							<article id={slug}>
+						postsWithContent.map(({ id, data, Content }) => (
+							<article id={id}>
 								<h2>{data.title}</h2>
 								<p class="meta">
 									<FormattedDate date={data.pubDate} />

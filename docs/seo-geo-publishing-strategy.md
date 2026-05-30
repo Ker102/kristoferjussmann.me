@@ -28,7 +28,7 @@ The Astro site should own:
 
 ## Hashnode Role
 
-Hashnode should be used as a distribution channel, not the primary identity source.
+Hashnode should be used as a distribution channel, not the primary identity source. Since Hashnode API access is now a paid/publication-level constraint, do not use Hashnode as an inbound source for this site.
 
 Recommended policy:
 
@@ -38,52 +38,79 @@ Recommended policy:
 4. If an article remains Hashnode-only, include a strong author bio and links back to the About page, case studies, GitHub, and portfolio.
 5. Avoid duplicate full articles without canonical linking.
 
+## Cross-Posting Targets
+
+Recommended order:
+
+1. **DEV Community / Forem**: best automation target. The DEV API supports creating and updating articles with `canonical_url`, so this is the strongest candidate for "write once in Astro, syndicate automatically".
+2. **HackerNoon**: strong technical audience and supports canonical links through the "First seen at" story setting, but editorial review makes it better for selected polished posts than automatic every-post syndication.
+3. **Medium**: useful for reach and supports manual canonical links, but Medium no longer issues new API integration tokens, so it should be treated as manual import/cross-posting unless an existing token already works.
+4. **LinkedIn Articles / Newsletter**: useful for recruiter and professional visibility, but treat it as a short adapted version or announcement because it is not a reliable canonical syndication target.
+5. **DZone**: credible developer audience but editorial guidelines prioritize original submissions and ask for care around syndicated content, so use it only for high-effort technical articles that fit their review process.
+
+Avoid blasting identical full articles everywhere. For SEO and GEO, publish the canonical version here first, then syndicate selectively with canonical links and a short "originally published" note.
+
 ## Recommended Publishing Workflow
 
 Use an Astro-first publishing workflow.
 
 1. Write the full post as MDX in `src/content/blog`.
 2. Push the post to GitHub and let Vercel publish the canonical page.
-3. After the canonical URL exists, syndicate the article to Hashnode.
-4. On Hashnode, set the canonical URL to the Astro post URL.
-5. Store the Hashnode URL or post ID in frontmatter or a sync manifest so updates can target the same syndicated copy.
+3. After the canonical URL exists, syndicate the article to DEV first, and optionally to Hashnode, HackerNoon, Medium, or LinkedIn depending on the post.
+4. On each external platform that supports it, set the canonical URL to the Astro post URL.
+5. Store the external post URL or post ID in frontmatter or a sync manifest so updates can target the same syndicated copy.
 
-This keeps entity authority on `ker102blog.vercel.app` while still using Hashnode for discovery.
+This keeps entity authority on `ker102blog.vercel.app` while still using external platforms for discovery.
 
 ## Automation Options
 
-### Option A: Astro-first + GitHub Action
+### Option A: Astro-first + DEV GitHub Action
 
 Recommended default.
 
 - Trigger when a new MDX post is merged.
 - Build the canonical Astro URL from the post slug.
-- Call the Hashnode GraphQL API from a server-side script using `HASHNODE_TOKEN` and `HASHNODE_PUBLICATION_ID`.
-- Create a Hashnode draft first, then publish after checking formatting.
-- Update a sync manifest with the Hashnode post ID and URL.
+- Call the DEV / Forem API from a server-side script using `DEVTO_API_KEY`.
+- Create a DEV draft first, then publish after checking formatting.
+- Set `canonical_url` to the Astro post.
+- Update a sync manifest with the DEV article ID and URL.
 
-Important constraint: Hashnode's API is currently documented as a GraphQL API at `https://gql.hashnode.com`, and Hashnode announced API access as a Pro publication feature on May 13, 2026. The exact mutation fields should be verified against the live schema with the publication token before implementation.
+Primary reference:
+
+- Forem / DEV API docs: <https://developers.forem.com/api/v1>
+
+### Option B: Manual/Selective Hashnode or Medium Cross-Post
+
+Useful when a post deserves extra reach but API access is limited.
+
+- Keep writing posts in this repo.
+- Publish the Astro/Vercel canonical URL first.
+- Import or paste the post into Hashnode or Medium.
+- Set the canonical URL manually in the platform's post settings.
+- Add a short note linking back to the canonical version.
 
 Primary references:
 
 - Hashnode GraphQL API docs: <https://docs.hashnode.com/quickstart/introduction>
 - Hashnode changelog entry for paid API access: <https://hashnode.com/changelog>
+- Medium canonical link help: <https://help.medium.com/hc/en-us/articles/360033930293-Set-a-canonical-link>
+- Medium API/importing status: <https://help.medium.com/hc/en-us/articles/213480228-API-Importing>
 
-### Option B: Codex/N8n Syndication Command
+### Option C: Codex/N8n Syndication Command
 
 Useful before building a full CI workflow.
 
 - Keep writing posts in this repo.
-- Run a local command or n8n workflow to syndicate one selected post.
-- The automation converts MDX to Hashnode-compatible Markdown, attaches the canonical URL, and creates or updates the Hashnode post.
+- Run a local command or n8n workflow to syndicate one selected post to DEV.
+- The automation converts MDX to platform-compatible Markdown, attaches the canonical URL, and creates or updates the external post.
 - This is lower risk because each post can be reviewed before publication.
 
-### Option C: Hashnode-first Import
+### Option D: Platform-first Import
 
-Use only if the writing experience on Hashnode becomes the main workflow.
+Use only if an external editor becomes the main writing workflow.
 
-- Publish on Hashnode first.
-- Pull the post into Astro through the API or RSS.
+- Publish externally first.
+- Pull the post into Astro through an API or RSS feed.
 - Keep a matching Astro page for local search/GEO value.
 
 This is not the preferred strategy because the portfolio site should own the canonical identity source.

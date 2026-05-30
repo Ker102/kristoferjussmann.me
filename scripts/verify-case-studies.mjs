@@ -139,7 +139,10 @@ const checks = [
 	},
 	{
 		name: 'homepage links to case studies',
-		pass: () => read('src/pages/index.astro').includes('href="/case-studies"'),
+		pass: () => {
+			const source = `${read('src/pages/index.astro')}\n${read('src/components/HomeFolders.jsx')}`;
+			return source.includes("href: '/case-studies'") || source.includes('href="/case-studies"');
+		},
 	},
 	{
 		name: 'blog index has scrollable recent-post navigation with active state',
