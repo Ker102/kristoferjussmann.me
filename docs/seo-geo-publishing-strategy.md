@@ -1,6 +1,6 @@
 # SEO/GEO Publishing Strategy
 
-Last updated: 2026-05-29
+Last updated: 2026-05-30
 
 ## Goal
 
@@ -22,19 +22,29 @@ The Astro site should own:
 - About page identity details;
 - Person schema and Article schema;
 - case studies and project evidence;
-- long-form technical blog posts;
+- blog posts and field notes covering what Kristofer is doing, learning, attending, building, testing, and shipping;
 - `llms.txt` for AI-readable summary;
 - links to GitHub, LinkedIn, Hugging Face, Kaelux.dev, and Hashnode.
 
+## Content Model
+
+Use three separate editorial lanes:
+
+1. **Site blog: public work log and activity archive.** This is allowed to be casual and broad: events, certification progress, project updates, debugging notes, small wins, learning notes, failed attempts, field observations, and "what I did this week" posts. These posts do not all need to be high-effort articles.
+2. **Case studies: high-effort evidence pages.** These are structured, hiring-manager-friendly project records with architecture, results, costs, tradeoffs, screenshots, diagrams, and remaining evidence gaps.
+3. **Hashnode / external technical publications: polished technical articles.** Use these for stronger standalone articles, research writeups, or technical narratives that deserve a broader engineering audience. Do not use Hashnode as the source of truth for this site.
+
+The site blog should be complete and honest, not artificially polished. The value is that it creates a dated trail of activity and context that recruiters, collaborators, and AI agents can read.
+
 ## Hashnode Role
 
-Hashnode should be used as a distribution channel, not the primary identity source. Since Hashnode API access is now a paid/publication-level constraint, do not use Hashnode as an inbound source for this site.
+Hashnode should be used for polished technical articles and research writeups, not as the primary identity source. Since Hashnode API access is now a paid/publication-level constraint, do not use Hashnode as an inbound source for this site.
 
 Recommended policy:
 
-1. Publish full canonical articles on the Astro site first.
-2. Cross-post to Hashnode only after the canonical page exists.
-3. Set the Hashnode canonical URL to the matching Astro post when publishing the same article.
+1. Publish activity-log posts on the Astro site only unless they are strong enough to adapt elsewhere.
+2. Use Hashnode for high-effort technical articles, research summaries, and PromptTriage-style writeups.
+3. When the same article exists on Hashnode and this site, set the Hashnode canonical URL to the matching Astro post.
 4. If an article remains Hashnode-only, include a strong author bio and links back to the About page, case studies, GitHub, and portfolio.
 5. Avoid duplicate full articles without canonical linking.
 
@@ -42,13 +52,14 @@ Recommended policy:
 
 Recommended order:
 
-1. **DEV Community / Forem**: best automation target. The DEV API supports creating and updating articles with `canonical_url`, so this is the strongest candidate for "write once in Astro, syndicate automatically".
-2. **HackerNoon**: strong technical audience and supports canonical links through the "First seen at" story setting, but editorial review makes it better for selected polished posts than automatic every-post syndication.
-3. **Medium**: useful for reach and supports manual canonical links, but Medium no longer issues new API integration tokens, so it should be treated as manual import/cross-posting unless an existing token already works.
-4. **LinkedIn Articles / Newsletter**: useful for recruiter and professional visibility, but treat it as a short adapted version or announcement because it is not a reliable canonical syndication target.
-5. **DZone**: credible developer audience but editorial guidelines prioritize original submissions and ask for care around syndicated content, so use it only for high-effort technical articles that fit their review process.
+1. **LinkedIn posts**: best for casual activity, event notes, certification progress, small wins, lessons learned, and personal-professional signal. Do not paste the blog post; adapt it into a native post.
+2. **DEV Community / Forem**: best automation target for casual technical posts that still have a practical engineering angle. The DEV API supports creating and updating articles with `canonical_url`.
+3. **Hashnode**: use selectively for polished technical articles and research writeups.
+4. **HackerNoon**: strong technical audience and supports canonical links through the "First seen at" story setting, but editorial review makes it better for selected polished posts than automatic every-post syndication.
+5. **Medium**: useful for reach and supports manual canonical links, but Medium no longer issues new API integration tokens, so treat it as manual import/cross-posting unless an existing token already works.
+6. **DZone**: credible developer audience but editorial guidelines prioritize original submissions and ask for care around syndicated content, so use it only for high-effort technical articles that fit their review process.
 
-Avoid blasting identical full articles everywhere. For SEO and GEO, publish the canonical version here first, then syndicate selectively with canonical links and a short "originally published" note.
+Avoid blasting identical full articles everywhere. For SEO and GEO, publish the canonical version here first, then adapt or syndicate selectively with canonical links and a short "originally published" note.
 
 ## Recommended Publishing Workflow
 
@@ -56,9 +67,11 @@ Use an Astro-first publishing workflow.
 
 1. Write the full post as MDX in `src/content/blog`.
 2. Push the post to GitHub and let Vercel publish the canonical page.
-3. After the canonical URL exists, syndicate the article to DEV first, and optionally to Hashnode, HackerNoon, Medium, or LinkedIn depending on the post.
-4. On each external platform that supports it, set the canonical URL to the Astro post URL.
-5. Store the external post URL or post ID in frontmatter or a sync manifest so updates can target the same syndicated copy.
+3. Decide whether the post is only an activity-log entry or worth adapting externally.
+4. For casual updates, write a native LinkedIn post and optionally link to the blog at the end or in a comment.
+5. For practical technical posts, syndicate to DEV with `canonical_url` pointing to the Astro post.
+6. For polished research or high-effort technical articles, consider Hashnode, HackerNoon, or Medium with canonical links.
+7. Store external post URLs or IDs in frontmatter or a sync manifest when useful.
 
 This keeps entity authority on `ker102blog.vercel.app` while still using external platforms for discovery.
 
@@ -66,7 +79,7 @@ This keeps entity authority on `ker102blog.vercel.app` while still using externa
 
 ### Option A: Astro-first + DEV GitHub Action
 
-Recommended default.
+Recommended for technical posts that have practical engineering value.
 
 - Trigger when a new MDX post is merged.
 - Build the canonical Astro URL from the post slug.
@@ -81,7 +94,7 @@ Primary reference:
 
 ### Option B: Manual/Selective Hashnode or Medium Cross-Post
 
-Useful when a post deserves extra reach but API access is limited.
+Useful when a polished technical article deserves extra reach but API access is limited.
 
 - Keep writing posts in this repo.
 - Publish the Astro/Vercel canonical URL first.
@@ -98,7 +111,7 @@ Primary references:
 
 ### Option C: Codex/N8n Syndication Command
 
-Useful before building a full CI workflow.
+Useful before building a full CI workflow for DEV or other API-accessible platforms.
 
 - Keep writing posts in this repo.
 - Run a local command or n8n workflow to syndicate one selected post to DEV.
@@ -117,7 +130,16 @@ This is not the preferred strategy because the portfolio site should own the can
 
 ## Blog Post Pattern
 
-Each strategic blog post should include:
+Each casual site blog post should include:
+
+- clear title with the event, project, or thing being learned;
+- date published and updated date;
+- a short summary near the top;
+- concrete first-person details;
+- links to relevant projects, case studies, repositories, or public profiles when useful;
+- no forced polish if the post is mainly an activity log.
+
+Each strategic technical post should include:
 
 - descriptive title with the topic and evidence angle;
 - clear description in frontmatter;
@@ -126,6 +148,39 @@ Each strategic blog post should include:
 - links to relevant projects, case studies, or repositories;
 - date published and updated date;
 - canonical page on this site if syndicated elsewhere.
+
+## LinkedIn Native Post Strategy
+
+Do not write generic announcement posts. Avoid openings like "I'm excited to share" unless the post is intentionally ironic or playful.
+
+LinkedIn posts should follow this shape:
+
+1. One sharp hook sentence at the top.
+2. Short one-sentence paragraphs or compact blocks.
+3. Concrete details before interpretation.
+4. One useful observation per paragraph.
+5. 90% story, lesson, field note, or opinion.
+6. 10% link, project mention, or call to action at most.
+7. End with a strong conclusion, question, or pointed takeaway.
+
+Good post archetypes:
+
+- **Unexpected lesson:** "I went to AWS Summit Amsterdam for cloud talks. I left thinking more about career leverage."
+- **Field note:** "The most useful AI security conversations I had in Brussels were not about models."
+- **Small win with context:** "I won an AWS certification voucher, but the real value was the timing."
+- **Build note:** "A portfolio is stronger when it shows the failed paths, not only the polished result."
+- **Contrarian observation:** "Most AI demos avoid the part that actually matters: operations."
+- **Progress log:** "This week I moved my portfolio from project cards toward evidence pages."
+
+Rules:
+
+- Do not lead with a link.
+- Do not over-explain the full project.
+- Do not stack hashtags.
+- Do not use corporate filler.
+- Do not make every post a humblebrag.
+- Mention the site, case study, or repo only when it naturally supports the point.
+- For event posts, write what changed in your thinking, not just where you went.
 
 ## GEO Checklist
 
