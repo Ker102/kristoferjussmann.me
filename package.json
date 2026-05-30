@@ -2,13 +2,16 @@
   "name": "popular-photon",
   "type": "module",
   "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0",
+    "npm": ">=10.8.0"
+  },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
     "check:notion": "node scripts/check-notion.cjs",
-    "sync:hashnode": "node scripts/fetch-hashnode.js",
     "verify:case-studies": "node scripts/verify-case-studies.mjs"
   },
   "dependencies": {
