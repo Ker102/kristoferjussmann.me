@@ -67,10 +67,10 @@ Use an Astro-first publishing workflow.
 
 1. Write the full post as MDX in `src/content/blog`.
 2. Push the post to GitHub and let Vercel publish the canonical page.
-3. Decide whether the post is only an activity-log entry or worth adapting externally.
+3. Decide in conversation whether the post is only an activity-log entry or worth adapting externally. Do not syndicate automatically by default.
 4. For casual updates, write a native LinkedIn post and optionally link to the blog at the end or in a comment.
-5. For practical technical posts, syndicate to DEV with `canonical_url` pointing to the Astro post.
-6. For polished research or high-effort technical articles, consider Hashnode, HackerNoon, or Medium with canonical links.
+5. For practical technical posts, opt into DEV by adding `syndicate: ['devto']` in frontmatter. The GitHub Action creates or updates a DEV draft with `canonical_url` pointing to the Astro post.
+6. For polished research or high-effort technical articles, consider manual Hashnode, HackerNoon, or Medium cross-posting with canonical links.
 7. Store external post URLs or IDs in frontmatter or a sync manifest when useful.
 
 This keeps entity authority on `ker102blog.vercel.app` while still using external platforms for discovery.
@@ -81,12 +81,28 @@ This keeps entity authority on `ker102blog.vercel.app` while still using externa
 
 Recommended for technical posts that have practical engineering value.
 
-- Trigger when a new MDX post is merged.
+- Trigger when a new MDX post is merged and the post opts in through frontmatter.
 - Build the canonical Astro URL from the post slug.
 - Call the DEV / Forem API from a server-side script using `DEVTO_API_KEY`.
-- Create a DEV draft first, then publish after checking formatting.
+- Create a DEV draft first, then publish only after checking formatting.
 - Set `canonical_url` to the Astro post.
-- Update a sync manifest with the DEV article ID and URL.
+
+Frontmatter pattern:
+
+```yaml
+tags:
+  - devsecops
+  - cloud
+syndicate:
+  - devto
+devtoTags:
+  - devsecops
+  - cloud
+  - ai
+devtoPublished: false
+```
+
+Use `devtoPublished: true` only when deliberately publishing from the workflow with the `publish` input enabled. Otherwise the automation should keep the external version as a draft.
 
 Primary reference:
 
@@ -101,6 +117,8 @@ Useful when a polished technical article deserves extra reach but API access is 
 - Import or paste the post into Hashnode or Medium.
 - Set the canonical URL manually in the platform's post settings.
 - Add a short note linking back to the canonical version.
+
+Current policy: Hashnode remains manual because paid API access is not worth it right now. Use it for polished research-style articles, not routine activity-log posts.
 
 Primary references:
 
@@ -153,6 +171,8 @@ Each strategic technical post should include:
 
 Do not write generic announcement posts. Avoid openings like "I'm excited to share" unless the post is intentionally ironic or playful.
 
+The preferred current voice is sharp, human, and occasionally absurd. Ironic posts can work when they make fun of corporate wording, founder cosplay, AI hype, certification grinding, event culture, cloud logs, or the weirdness of building in public. Keep these posts short and clearly joking; do not turn them into engagement bait.
+
 LinkedIn posts should follow this shape:
 
 1. One sharp hook sentence at the top.
@@ -165,6 +185,7 @@ LinkedIn posts should follow this shape:
 
 Good post archetypes:
 
+- **Absurd tech satire:** "So excited to announce I am officially LARPing as a cloud professional this summer."
 - **Unexpected lesson:** "I went to AWS Summit Amsterdam for cloud talks. I left thinking more about career leverage."
 - **Field note:** "The most useful AI security conversations I had in Brussels were not about models."
 - **Small win with context:** "I won an AWS certification voucher, but the real value was the timing."
@@ -179,8 +200,10 @@ Rules:
 - Do not stack hashtags.
 - Do not use corporate filler.
 - Do not make every post a humblebrag.
+- Treat wins as side quests when possible, not the whole point.
 - Mention the site, case study, or repo only when it naturally supports the point.
 - For event posts, write what changed in your thinking, not just where you went.
+- Short ironic posts can use no hashtags. For serious event posts, use 3-5 specific hashtags at most.
 
 ## GEO Checklist
 

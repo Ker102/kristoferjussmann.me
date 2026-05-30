@@ -12,6 +12,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "check:notion": "node scripts/check-notion.cjs",
+    "publish:devto": "node scripts/publish-devto.mjs",
     "verify:case-studies": "node scripts/verify-case-studies.mjs"
   },
   "dependencies": {

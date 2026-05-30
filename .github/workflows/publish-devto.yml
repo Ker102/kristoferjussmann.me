@@ -1,0 +1,49 @@
+name: Publish DEV drafts
+
+on:
+  workflow_dispatch:
+    inputs:
+      slug:
+        description: Blog post slug to sync. Leave empty to sync every DEV-tagged post.
+        required: false
+        type: string
+      publish:
+        description: Publish instead of keeping as a DEV draft. Requires devtoPublished true in frontmatter.
+        required: false
+        default: false
+        type: boolean
+  push:
+    branches:
+      - feature/case-studies-mobile-first
+      - main
+    paths:
+      - 'src/content/blog/**'
+      - 'scripts/publish-devto.mjs'
+      - '.github/workflows/publish-devto.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  publish-devto:
+    runs-on: ubuntu-latest
+    env:
+      SITE_URL: https://ker102blog.vercel.app
+      DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
+      DEVTO_POST_SLUG: ${{ inputs.slug }}
+      DEVTO_PUBLISH: ${{ inputs.publish }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Create or update DEV drafts
+        run: node scripts/publish-devto.mjs
