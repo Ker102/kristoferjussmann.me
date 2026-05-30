@@ -1,7 +1,7 @@
 KRISTOFER JUSSMANN
 AGENTIC SYSTEMS ENGINEER | AI PLATFORM | AGENT ARCHITECTURE
 Tallinn, Eesti | (+372) 53006315 | kristoferjussmann@gmail.com
-LinkedIn: linkedin.com/in/kristofer-jussmann-ker102 | GitHub: github.com/Ker102 | Portfoolio: ker102blog.vercel.app | Agentuur: kaelux.dev
+LinkedIn: linkedin.com/in/kristofer-jussmann-ker102 | GitHub: github.com/Ker102 | Portfoolio: kristoferjussmann.me | Agentuur: kaelux.dev
 
 KOKKUVÕTE
 Agentic systems engineer (agent-süsteemide insener) 5+ aastase Pythoni arenduse kogemusega ja ligi 2-aastase kogemusega toodanguvalmis AI, automatiseerimise ja pilvetoodete ehitamisel Kaeluxi alt. Olen ehitanud ja hallanud 3 reaalsete kasutajatega internetipõhist toodet ning haldan 30+ avalikku GitHubi projekti. Kogemuste hulka kuuluvad tööriistu kasutavad agendid (tool-using agents), LangChain, MCP, RAG, Corrective RAG, vektorandmebaasid, FastAPI, TypeScript, Docker, Kubernetes ja pilve GPU mudelite hindamine. Sihtrollideks on Agentic Systems Engineer, AI Platform Engineer, Secure AI Systems Engineer ja Agentic Systems Architect.

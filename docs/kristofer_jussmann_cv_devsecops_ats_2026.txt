@@ -1,7 +1,7 @@
 KRISTOFER JUSSMANN
 CLOUD PLATFORM ENGINEER | DEVSECOPS | AI INFRASTRUCTURE
 Tallinn, Estonia | (+372) 53006315 | kristoferjussmann@gmail.com
-LinkedIn: linkedin.com/in/kristofer-jussmann-ker102 | GitHub: github.com/Ker102 | Portfolio: ker102blog.vercel.app | Agency: kaelux.dev
+LinkedIn: linkedin.com/in/kristofer-jussmann-ker102 | GitHub: github.com/Ker102 | Portfolio: kristoferjussmann.me | Agency: kaelux.dev
 
 SUMMARY
 Cloud and AI systems engineer with 5+ years of Python development and nearly 2 years building production AI, automation, and cloud products through Kaelux. Built and operated 3 live internet-facing products and maintain 30+ public GitHub projects. Experience includes Azure, Azure ML, Docker, Kubernetes, FastAPI, TypeScript, workflow automation, vector databases, tool-using systems, and cloud GPU workloads. Target roles include DevSecOps Engineer, Cloud Platform Engineer, Secure Systems Engineer, and AI Infrastructure Engineer.

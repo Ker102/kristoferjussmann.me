@@ -6,7 +6,7 @@ Phone: (+372) 53006315
 Email: kristoferjussmann@gmail.com
 LinkedIn: linkedin.com/in/kristofer-jussmann-ker102
 GitHub: github.com/Ker102
-Portfolio: ker102blog.vercel.app
+Portfolio: kristoferjussmann.me
 
 ================================================================================
 PROFESSIONAL SUMMARY
@@ -113,7 +113,7 @@ LANGUAGES
 ONLINE PRESENCE
 ================================================================================
 
-Portfolio: ker102blog.vercel.app
+Portfolio: kristoferjussmann.me
 Agency: kaelux.dev
 GitHub: github.com/Ker102 (22+ public repositories)
 Hugging Face: huggingface.co/Ker102

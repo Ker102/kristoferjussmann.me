@@ -1,7 +1,7 @@
 KRISTOFER JUSSMANN
 CLOUD PLATFORM & AGENTIC SYSTEMS ENGINEER | DEVSECOPS | AI INFRASTRUCTURE
 Tallinn, Estonia | (+372) 53006315 | kristoferjussmann@gmail.com
-LinkedIn: linkedin.com/in/kristofer-jussmann-ker102 | GitHub: github.com/Ker102 | Portfolio: ker102blog.vercel.app | Agency: kaelux.dev
+LinkedIn: linkedin.com/in/kristofer-jussmann-ker102 | GitHub: github.com/Ker102 | Portfolio: kristoferjussmann.me | Agency: kaelux.dev
 
 SUMMARY
 Cloud, DevSecOps, and Agentic systems engineer with 5+ years of Python development and nearly 2 years building production AI, automation, and cloud products through Kaelux. Built and operated 3 live internet-facing products and maintain 30+ public GitHub projects. Comprehensive experience spans cloud infrastructure (Azure, Kubernetes, Docker) and state-of-the-art AI systems (tool-using agents, LangChain, RAG, MCP, model fine-tuning). Target roles include DevSecOps Engineer, Agentic Systems Engineer, Cloud Platform Engineer, Secure Systems Engineer, and AI Infrastructure Engineer.

@@ -6,9 +6,9 @@
 ![Notion Sync](https://img.shields.io/github/actions/workflow/status/Ker102/Astroblogauto/publish-from-notion.yml?label=notion%20sync&logo=notion&logoColor=white)
 ![License](https://img.shields.io/badge/license-personal-blue)
 
-A personal technical blog and minimalistic portfolio by **Kristofer Jussmann** — covering AI Engineering, DevOps, and Full-Stack Development.
+A personal technical blog and portfolio by **Kristofer Jussmann (Ker102)** — covering DevSecOps, AI/ML systems, secure cloud infrastructure, automation, and project case studies.
 
-🔗 **Live site:** [https://ker102blog.vercel.app/)
+🔗 **Live site:** [https://kristoferjussmann.me/](https://kristoferjussmann.me/)
 
 ---
 

@@ -6,7 +6,7 @@ Telefon: (+372) 53006315
 E-post: kristoferjussmann@gmail.com
 LinkedIn: linkedin.com/in/kristofer-jussmann-ker102
 GitHub: github.com/Ker102
-TehnilinePortfoolio: ker102blog.vercel.app
+TehnilinePortfoolio: kristoferjussmann.me
 
 ================================================================================
 PROFESSIONAALNE KOKKUVÕTE
@@ -113,7 +113,7 @@ KEELED
 VEEBIKOHALOLEK
 ================================================================================
 
-Portfoolio: ker102blog.vercel.app
+Portfoolio: kristoferjussmann.me
 Agentuur: kaelux.dev
 GitHub: github.com/Ker102 (22+ avalikku hoidlat)
 Hugging Face: huggingface.co/Ker102

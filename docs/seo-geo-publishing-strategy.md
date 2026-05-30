@@ -4,7 +4,7 @@ Last updated: 2026-05-30
 
 ## Goal
 
-Make `ker102blog.vercel.app` the canonical source for Kristofer Jussmann / Ker102 as a DevSecOps and AI/ML systems professional. The site should be easy for hiring managers, Google, and AI agents to parse.
+Make `kristoferjussmann.me` the canonical source for Kristofer Jussmann / Ker102 as a DevSecOps and AI/ML systems professional. The site should be easy for hiring managers, Google, and AI agents to parse.
 
 ## Entity Positioning
 
@@ -73,7 +73,7 @@ Use an Astro-first publishing workflow.
 6. For polished research or high-effort technical articles, consider manual Hashnode, HackerNoon, or Medium cross-posting with canonical links.
 7. Store external post URLs or IDs in frontmatter or a sync manifest when useful.
 
-This keeps entity authority on `ker102blog.vercel.app` while still using external platforms for discovery.
+This keeps entity authority on `kristoferjussmann.me` while still using external platforms for discovery.
 
 ## Automation Options
 

@@ -10,7 +10,7 @@ import { PERSON_HANDLE, PERSON_KNOWS_ABOUT, PERSON_NAME, PERSON_SAME_AS } from '
 type Props = CollectionEntry<'blog'>['data'];
 
 const { title, description, pubDate, updatedDate, heroImage, externalUrl, source } = Astro.props;
-const personId = 'https://ker102blog.vercel.app/about/#kristofer-jussmann-ker102';
+const personId = 'https://kristoferjussmann.me/about/#kristofer-jussmann-ker102';
 ---
 
 <html lang="en">
@@ -30,7 +30,7 @@ const personId = 'https://ker102blog.vercel.app/about/#kristofer-jussmann-ker102
 					'@id': personId,
 					name: PERSON_NAME,
 					alternateName: PERSON_HANDLE,
-					url: 'https://ker102blog.vercel.app/about/',
+					url: 'https://kristoferjussmann.me/about/',
 					sameAs: PERSON_SAME_AS,
 					knowsAbout: PERSON_KNOWS_ABOUT,
 				},

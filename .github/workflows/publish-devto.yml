@@ -28,7 +28,7 @@ jobs:
   publish-devto:
     runs-on: ubuntu-latest
     env:
-      SITE_URL: https://ker102blog.vercel.app
+      SITE_URL: https://kristoferjussmann.me
       DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
       DEVTO_POST_SLUG: ${{ inputs.slug }}
       DEVTO_PUBLISH: ${{ inputs.publish }}

@@ -2,7 +2,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 
 const BLOG_DIR = path.join(process.cwd(), 'src', 'content', 'blog');
-const SITE_URL = (process.env.SITE_URL || 'https://ker102blog.vercel.app').replace(/\/$/, '');
+const SITE_URL = (process.env.SITE_URL || 'https://kristoferjussmann.me').replace(/\/$/, '');
 const DEVTO_API_URL = 'https://dev.to/api/articles';
 const DEVTO_API_KEY = process.env.DEVTO_API_KEY;
 const SELECTED_SLUG = process.env.DEVTO_POST_SLUG;
