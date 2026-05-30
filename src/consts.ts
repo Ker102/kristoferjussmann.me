@@ -10,6 +10,10 @@ export const PERSON_HANDLE = 'Ker102';
 export const PERSON_TITLE = 'DevSecOps and AI/ML Systems Professional';
 export const PERSON_DESCRIPTION =
 	'Kristofer Jussmann, also known online as Ker102, specializes in DevSecOps, AI/ML systems, secure cloud infrastructure, agentic automation, RAG systems, workflow automation, and open-source engineering.';
+export const PERSON_IMAGE = '/images/profile/kristofer-jussmann-ker102-profile.png';
+export const PERSON_PORTRAIT_IMAGE = '/images/profile/kristofer-jussmann-ker102-portrait.png';
+export const PERSON_IMAGE_ALT =
+	'Black and white portrait of Kristofer Jussmann, also known as Ker102.';
 export const PERSON_SAME_AS = [
 	'https://github.com/Ker102',
 	'https://www.linkedin.com/in/kristofer-jussmann-ker102/',

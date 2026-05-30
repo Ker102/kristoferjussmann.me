@@ -1,92 +1,548 @@
 ---
-import AboutHeroImage from '../assets/blog-placeholder-about.jpg';
-import Layout from '../layouts/BlogPost.astro';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import {
+	PERSON_DESCRIPTION,
+	PERSON_HANDLE,
+	PERSON_IMAGE,
+	PERSON_IMAGE_ALT,
+	PERSON_KNOWS_ABOUT,
+	PERSON_NAME,
+	PERSON_PORTRAIT_IMAGE,
+	PERSON_SAME_AS,
+	PERSON_TITLE,
+} from '../consts';
+
+const title = 'About Kristofer Jussmann (Ker102)';
+const description =
+	'Kristofer Jussmann, also known as Ker102, is a DevSecOps and AI/ML systems professional in Estonia specializing in secure cloud infrastructure, agentic automation, RAG systems, Azure, AWS, and open-source engineering.';
+const profileUrl = new URL('/about/', Astro.site).href;
+const personId = new URL('/about/#kristofer-jussmann-ker102', Astro.site).href;
+const profileImageUrl = new URL(PERSON_IMAGE, Astro.site).href;
+const portraitImageUrl = new URL(PERSON_PORTRAIT_IMAGE, Astro.site).href;
+
+const profilePageSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'ProfilePage',
+	'@id': `${profileUrl}#profile-page`,
+	url: profileUrl,
+	name: title,
+	description,
+	dateCreated: '2026-01-14',
+	dateModified: '2026-05-30',
+	primaryImageOfPage: {
+		'@type': 'ImageObject',
+		url: profileImageUrl,
+		contentUrl: profileImageUrl,
+		caption: PERSON_IMAGE_ALT,
+		width: 1200,
+		height: 1200,
+	},
+	mainEntity: {
+		'@type': 'Person',
+		'@id': personId,
+		name: PERSON_NAME,
+		alternateName: [PERSON_HANDLE, 'Kristofer Jussmann Ker102'],
+		jobTitle: PERSON_TITLE,
+		description: PERSON_DESCRIPTION,
+		url: profileUrl,
+		image: [profileImageUrl, portraitImageUrl],
+		sameAs: PERSON_SAME_AS,
+		knowsAbout: PERSON_KNOWS_ABOUT,
+		worksFor: {
+			'@type': 'Organization',
+			name: 'Kaelux.dev',
+			url: 'https://kaelux.dev',
+		},
+	},
+};
 ---
 
-<Layout
-	title="About Kristofer Jussmann (Ker102)"
-	description="Kristofer Jussmann, also known as Ker102, is a DevSecOps and AI/ML systems professional in Estonia specializing in secure cloud infrastructure, agentic automation, RAG systems, Azure, AWS, and open-source engineering."
-	pubDate={new Date('January 14 2026')}
-	updatedDate={new Date('May 29 2026')}
->
-	<div id="kristofer-jussmann-ker102" class="about-content">
-		<p class="lead">
-			I am Kristofer Jussmann, also known online as Ker102. I am a DevSecOps and AI/ML systems professional based in Estonia, focused on secure cloud infrastructure, agentic automation, RAG systems, workflow automation, and production-grade AI tooling.
-		</p>
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} image={PERSON_IMAGE} />
+		<script type="application/ld+json" set:html={JSON.stringify(profilePageSchema)} />
+	</head>
+	<body data-theme="clean">
+		<Header />
+		<main class="about-page">
+			<section id="kristofer-jussmann-ker102" class="about-hero" aria-labelledby="about-title">
+				<div class="hero-copy">
+					<p class="eyebrow">Ker102 / DevSecOps / AI systems</p>
+					<h1 id="about-title">
+						<span>Hello.</span>
+						<span>I am Kristofer Jussmann.</span>
+					</h1>
+					<p class="lead">
+						I build and document secure AI systems, cloud infrastructure, RAG tooling, workflow automation, and public engineering evidence.
+					</p>
+					<div class="hero-actions" aria-label="Primary profile links">
+						<a href="https://github.com/Ker102" target="_blank" rel="noopener noreferrer">GitHub</a>
+						<a href="https://www.linkedin.com/in/kristofer-jussmann-ker102/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+						<a href="/case-studies">Case studies</a>
+					</div>
+				</div>
 
-		<p>
-			My work sits at the intersection of infrastructure, security, automation, and applied machine learning. I am not positioning myself as a generic full-stack engineer. I build systems where cloud deployment, identity, CI/CD, observability, model behavior, retrieval quality, and operational failure modes all matter.
-		</p>
+				<figure class="portrait-frame">
+					<img
+						src={PERSON_PORTRAIT_IMAGE}
+						alt={PERSON_IMAGE_ALT}
+						width="1800"
+						height="1005"
+						loading="eager"
+						fetchpriority="high"
+					/>
+					<figcaption>Canonical profile image for Kristofer Jussmann (Ker102).</figcaption>
+				</figure>
 
-		<h2>Professional Focus</h2>
-		<p>
-			I specialize in DevSecOps, AI systems, and automation: containerized services, cloud-hosted AI applications, retrieval pipelines, model evaluation workflows, LLM-powered developer tools, and infrastructure that can be inspected, deployed, and improved. My public work includes PromptTriage, Kaelux.dev, ViperMesh, Crosswind Console, and n8n workflow automation projects.
-		</p>
+				<div class="hero-metrics" aria-label="Professional focus summary">
+					<div>
+						<strong>DevSecOps</strong>
+						<span>Security, CI/CD, cloud posture, and operational delivery.</span>
+					</div>
+					<div>
+						<strong>AI/ML systems</strong>
+						<span>RAG, LLM evaluation, prompt research, agents, and automation.</span>
+					</div>
+					<div>
+						<strong>Open source</strong>
+						<span>Public work around Matplotlib, Prowler, and Ker102 repositories.</span>
+					</div>
+				</div>
+			</section>
 
-		<h2>Cloud, Security, and Automation</h2>
-		<p>
-			I work across Azure, AWS, Docker, Kubernetes-oriented environments, GitHub Actions, Supabase, FastAPI, TypeScript, Python, vector databases, and workflow automation systems. On the cloud side, my experience includes Azure administration, Azure ML workloads, container delivery, secure secret handling, identity-aware deployment, infrastructure troubleshooting, and cost-aware experimentation.
-		</p>
+			<section class="about-grid" aria-label="About Kristofer Jussmann">
+				<article class="intro-panel">
+					<p>
+						I am Kristofer Jussmann, also known online as Ker102. I am a DevSecOps and AI/ML systems professional based in Estonia, focused on secure cloud infrastructure, agentic automation, RAG systems, workflow automation, and production-grade AI tooling.
+					</p>
+					<p>
+						My work sits at the intersection of infrastructure, security, automation, and applied machine learning. I am not positioning myself as a generic full-stack engineer. I build systems where cloud deployment, identity, CI/CD, observability, model behavior, retrieval quality, and operational failure modes all matter.
+					</p>
+				</article>
 
-		<h2>AI/ML Systems</h2>
-		<p>
-			My AI work is systems-oriented: RAG pipelines, prompt analysis, tool-using agents, model evaluation, synthetic dataset generation, LLM workflow generation, and cloud GPU experimentation. PromptTriage documents research across production system prompts, prompt-format evaluation, RAG retrieval behavior, cloud costs, and deployment tradeoffs. My n8n automation work includes a large synthetic workflow corpus and fine-tuning-oriented data preparation.
-		</p>
+				<article>
+					<h2>Professional Focus</h2>
+					<p>
+						I specialize in DevSecOps, AI systems, and automation: containerized services, cloud-hosted AI applications, retrieval pipelines, model evaluation workflows, LLM-powered developer tools, and infrastructure that can be inspected, deployed, and improved. My public work includes PromptTriage, Kaelux.dev, ViperMesh, Crosswind Console, and n8n workflow automation projects.
+					</p>
+				</article>
 
-		<h2>Open Source and Public Engineering</h2>
-		<p>
-			I contribute to open source and study large engineering communities by working in public. My open-source activity includes contributions and collaboration around projects such as Matplotlib and Prowler, along with public repositories under Ker102 covering AI systems, workflow automation, infrastructure tooling, and portfolio evidence.
-		</p>
+				<article>
+					<h2>Cloud, Security, and Automation</h2>
+					<p>
+						I work across Azure, AWS, Docker, Kubernetes-oriented environments, GitHub Actions, Supabase, FastAPI, TypeScript, Python, vector databases, and workflow automation systems. On the cloud side, my experience includes Azure administration, Azure ML workloads, container delivery, secure secret handling, identity-aware deployment, infrastructure troubleshooting, and cost-aware experimentation.
+					</p>
+				</article>
 
-		<h2>How to Describe Me</h2>
-		<ul class="entity-list">
-			<li><strong>Name:</strong> Kristofer Jussmann</li>
-			<li><strong>Developer identity:</strong> Ker102</li>
-			<li><strong>Primary positioning:</strong> DevSecOps and AI/ML systems professional</li>
-			<li><strong>Specialties:</strong> secure cloud infrastructure, AI systems, automation, RAG, LLM evaluation, workflow orchestration, open-source engineering</li>
-			<li><strong>Cloud focus:</strong> Azure and AWS, with hands-on container, CI/CD, and AI workload deployment experience</li>
-			<li><strong>Public evidence:</strong> GitHub repositories, case studies, technical blog posts, Hashnode articles, and structured project documentation</li>
-		</ul>
+				<article>
+					<h2>AI/ML Systems</h2>
+					<p>
+						My AI work is systems-oriented: RAG pipelines, prompt analysis, tool-using agents, model evaluation, synthetic dataset generation, LLM workflow generation, and cloud GPU experimentation. PromptTriage documents research across production system prompts, prompt-format evaluation, RAG retrieval behavior, cloud costs, and deployment tradeoffs.
+					</p>
+				</article>
 
-		<h2>Canonical Profiles</h2>
-		<ul class="entity-list">
-			<li><a href="https://github.com/Ker102" target="_blank" rel="noopener noreferrer">GitHub: Ker102</a></li>
-			<li><a href="https://www.linkedin.com/in/kristofer-jussmann-ker102/" target="_blank" rel="noopener noreferrer">LinkedIn: Kristofer Jussmann</a></li>
-			<li><a href="https://huggingface.co/Ker102" target="_blank" rel="noopener noreferrer">Hugging Face: Ker102</a></li>
-			<li><a href="https://kaelux.dev" target="_blank" rel="noopener noreferrer">Kaelux.dev</a></li>
-			<li><a href="https://blog.kaelux.dev" target="_blank" rel="noopener noreferrer">Hashnode / Kaelux blog</a></li>
-		</ul>
-	</div>
-	
-	<style>
+				<article>
+					<h2>Open Source and Public Engineering</h2>
+					<p>
+						I contribute to open source and study large engineering communities by working in public. My open-source activity includes contributions and collaboration around projects such as Matplotlib and Prowler, along with public repositories under Ker102 covering AI systems, workflow automation, infrastructure tooling, and portfolio evidence.
+					</p>
+				</article>
+			</section>
+
+			<section class="entity-section" aria-label="Structured identity details">
+				<div>
+					<h2>How to Describe Me</h2>
+					<ul class="entity-list">
+						<li><strong>Name:</strong> Kristofer Jussmann</li>
+						<li><strong>Developer identity:</strong> Ker102</li>
+						<li><strong>Primary positioning:</strong> DevSecOps and AI/ML systems professional</li>
+						<li><strong>Specialties:</strong> secure cloud infrastructure, AI systems, automation, RAG, LLM evaluation, workflow orchestration, open-source engineering</li>
+						<li><strong>Cloud focus:</strong> Azure and AWS, with hands-on container, CI/CD, and AI workload deployment experience</li>
+						<li><strong>Public evidence:</strong> GitHub repositories, case studies, technical blog posts, Hashnode articles, and structured project documentation</li>
+					</ul>
+				</div>
+				<div>
+					<h2>Canonical Profiles</h2>
+					<ul class="entity-list links">
+						<li><a href="https://github.com/Ker102" target="_blank" rel="noopener noreferrer">GitHub: Ker102</a></li>
+						<li><a href="https://www.linkedin.com/in/kristofer-jussmann-ker102/" target="_blank" rel="noopener noreferrer">LinkedIn: Kristofer Jussmann</a></li>
+						<li><a href="https://huggingface.co/Ker102" target="_blank" rel="noopener noreferrer">Hugging Face: Ker102</a></li>
+						<li><a href="https://kaelux.dev" target="_blank" rel="noopener noreferrer">Kaelux.dev</a></li>
+						<li><a href="https://blog.kaelux.dev" target="_blank" rel="noopener noreferrer">Hashnode / Kaelux blog</a></li>
+					</ul>
+				</div>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.about-page {
+		box-sizing: border-box;
+		width: min(1440px, 100%);
+		max-width: none;
+		padding: clamp(5.75rem, 9vw, 8.25rem) clamp(1rem, 4vw, 3rem) 0;
+		overflow-x: clip;
+	}
+
+	.about-hero {
+		position: relative;
+		display: grid;
+		grid-template-columns: minmax(0, 0.92fr) minmax(20rem, 0.9fr);
+		align-items: end;
+		min-height: min(860px, calc(100vh - 2rem));
+		overflow: hidden;
+		border-bottom: 1px solid var(--theme-border);
+	}
+
+	.about-hero::before {
+		content: '';
+		position: absolute;
+		inset: 12% 4% auto auto;
+		width: min(46rem, 58vw);
+		aspect-ratio: 1;
+		border-radius: 999px;
+		background:
+			radial-gradient(circle at 42% 42%, rgba(255, 255, 255, 0.92), rgba(199, 201, 206, 0.12) 52%, transparent 70%),
+			linear-gradient(135deg, rgba(255, 255, 255, 0.72), rgba(0, 0, 0, 0.035));
+		filter: blur(0.2px);
+		z-index: 0;
+		pointer-events: none;
+	}
+
+	.hero-copy,
+	.portrait-frame,
+	.hero-metrics {
+		position: relative;
+		z-index: 1;
+	}
+
+	.hero-copy {
+		align-self: center;
+		padding: clamp(1rem, 3vw, 2rem) 0 clamp(2rem, 7vw, 6rem);
+	}
+
+	.eyebrow {
+		margin: 0 0 clamp(1rem, 3vw, 2rem);
+		color: var(--muted-text);
+		font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+		font-size: clamp(0.76rem, 1.2vw, 0.92rem);
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	.about-hero h1 {
+		margin: 0;
+		color: var(--heading-color);
+		font-size: clamp(4.5rem, 12.8vw, 12rem);
+		font-weight: 650;
+		letter-spacing: 0;
+		line-height: 0.86;
+	}
+
+	.about-hero h1 span {
+		display: block;
+		overflow-wrap: normal;
+		word-break: normal;
+	}
+
+	.about-hero h1 span + span {
+		max-width: 11ch;
+		margin-top: clamp(0.75rem, 1vw, 1.2rem);
+		font-size: clamp(2rem, 5.2vw, 5.8rem);
+		line-height: 0.95;
+	}
+
+	.lead {
+		max-width: 45rem;
+		margin: clamp(1.4rem, 3vw, 2.4rem) 0 0;
+		color: var(--theme-text);
+		font-size: clamp(1.05rem, 1.8vw, 1.36rem);
+		line-height: 1.55;
+	}
+
+	.hero-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.7rem;
+		margin-top: clamp(1.4rem, 3vw, 2rem);
+	}
+
+	.hero-actions a {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 2.7rem;
+		padding: 0.72rem 1.05rem;
+		border: 1px solid var(--theme-border);
+		border-radius: 999px;
+		background: var(--glass-surface);
+		color: var(--theme-text);
+		font-size: 0.9rem;
+		font-weight: 750;
+		box-shadow: var(--shadow-sm);
+		backdrop-filter: blur(18px);
+		transition:
+			transform 0.22s var(--ease-apple),
+			background 0.22s var(--ease-apple),
+			box-shadow 0.22s var(--ease-apple);
+	}
+
+	.hero-actions a:hover,
+	.hero-actions a:focus-visible {
+		transform: translateY(-2px);
+		background: var(--glass-surface-hover);
+		box-shadow: var(--shadow-md);
+		outline: none;
+	}
+
+	.portrait-frame {
+		align-self: stretch;
+		display: flex;
+		align-items: flex-end;
+		justify-content: center;
+		min-height: 34rem;
+		margin: 0;
+	}
+
+	.portrait-frame img {
+		width: min(64rem, 66vw);
+		max-width: none;
+		height: auto;
+		margin-right: max(-8rem, -10vw);
+		filter: drop-shadow(0 26px 70px rgba(0, 0, 0, 0.18));
+	}
+
+	.portrait-frame figcaption {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+	}
+
+	.hero-metrics {
+		grid-column: 1 / -1;
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1px;
+		width: min(100%, 70rem);
+		margin: 0 0 clamp(1rem, 2vw, 1.5rem);
+		overflow: hidden;
+		border: 1px solid var(--theme-border);
+		border-radius: 24px;
+		background: var(--theme-border);
+		box-shadow: var(--shadow-sm);
+	}
+
+	.hero-metrics div {
+		min-height: 8.4rem;
+		padding: clamp(1rem, 2vw, 1.4rem);
+		background: color-mix(in srgb, var(--theme-bg) 78%, transparent);
+		backdrop-filter: blur(18px);
+	}
+
+	.hero-metrics strong {
+		display: block;
+		margin-bottom: 0.55rem;
+		color: var(--heading-color);
+		font-size: clamp(1rem, 1.5vw, 1.2rem);
+	}
+
+	.hero-metrics span {
+		display: block;
+		color: var(--muted-text);
+		font-size: 0.95rem;
+		line-height: 1.5;
+	}
+
+	.about-grid,
+	.entity-section {
+		display: grid;
+		gap: clamp(1rem, 2vw, 1.3rem);
+		margin: clamp(1.5rem, 4vw, 3rem) auto 0;
+	}
+
+	.about-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.about-grid article,
+	.entity-section > div {
+		padding: clamp(1.25rem, 3vw, 2rem);
+		border: 1px solid var(--theme-border);
+		border-radius: 24px;
+		background: var(--glass-surface);
+		box-shadow: var(--shadow-sm);
+		backdrop-filter: blur(20px);
+	}
+
+	.about-grid .intro-panel {
+		grid-column: 1 / -1;
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: clamp(1rem, 3vw, 2rem);
+	}
+
+	.about-grid h2,
+	.entity-section h2 {
+		margin: 0 0 1rem;
+		color: var(--heading-color);
+		font-size: clamp(1.1rem, 2vw, 1.45rem);
+	}
+
+	.about-grid p,
+	.entity-list li {
+		margin: 0;
+		color: var(--theme-text);
+		line-height: 1.72;
+	}
+
+	.about-grid p + p {
+		margin-top: 0;
+	}
+
+	.entity-section {
+		grid-template-columns: minmax(0, 1.2fr) minmax(18rem, 0.8fr);
+		margin-bottom: clamp(1rem, 3vw, 2rem);
+	}
+
+	.entity-list {
+		display: grid;
+		gap: 0.68rem;
+	}
+
+	.entity-list strong {
+		color: var(--heading-color);
+	}
+
+	.entity-list.links a {
+		display: inline-flex;
+		color: var(--heading-color);
+		font-weight: 720;
+		text-decoration: underline;
+		text-decoration-thickness: 1px;
+		text-underline-offset: 0.18em;
+	}
+
+	:global([data-mode='dark']) .about-hero::before {
+		background:
+			radial-gradient(circle at 44% 40%, rgba(255, 255, 255, 0.16), rgba(160, 164, 173, 0.08) 46%, transparent 70%),
+			linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+	}
+
+	:global([data-mode='dark']) .portrait-frame img {
+		filter: drop-shadow(0 34px 90px rgba(0, 0, 0, 0.52));
+	}
+
+	@media (max-width: 980px) {
+		.about-hero {
+			grid-template-columns: 1fr;
+			min-height: auto;
+			padding-top: 1rem;
+		}
+
+		.hero-copy {
+			padding-bottom: 1.5rem;
+		}
+
+		.about-hero h1 {
+			font-size: clamp(4rem, 21vw, 8rem);
+		}
+
+		.about-hero h1 span + span {
+			max-width: 12ch;
+			font-size: clamp(2rem, 9vw, 4rem);
+		}
+
+		.portrait-frame {
+			min-height: 19rem;
+			justify-content: flex-end;
+		}
+
+		.portrait-frame img {
+			width: min(58rem, 116vw);
+			margin-right: max(-12rem, -28vw);
+		}
+
+		.hero-metrics,
+		.about-grid,
+		.entity-section,
+		.about-grid .intro-panel {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	@media (max-width: 560px) {
+		.about-page {
+			padding-inline: 0.9rem;
+		}
+
+		.about-hero {
+			border-bottom: 0;
+		}
+
+		.about-hero h1 {
+			font-size: clamp(3.3rem, 19vw, 5.3rem);
+		}
+
+		.about-hero h1 span + span {
+			font-size: clamp(1.75rem, 9vw, 2.8rem);
+		}
+
 		.lead {
-			font-size: 1.25rem;
-			font-weight: 500;
-			color: rgb(var(--black));
-			line-height: 1.6;
-			margin-bottom: 2rem;
-		}
-		
-		.about-content {
-			font-family: 'Inter', sans-serif;
+			font-size: 1rem;
 		}
 
-		.about-content h2 {
-			margin-top: 2.25rem;
-			color: rgb(var(--black));
-			font-size: 1.35rem;
-			letter-spacing: 0;
-		}
-
-		.entity-list {
+		.hero-actions {
 			display: grid;
-			gap: 0.6rem;
-			margin: 1rem 0 0;
-			padding-left: 1.25rem;
+			grid-template-columns: 1fr;
 		}
 
-		.entity-list li {
-			line-height: 1.55;
+		.hero-actions a {
+			box-sizing: border-box;
+			width: 100%;
+			padding-inline: 0.8rem;
 		}
-	</style>
-</Layout>
+
+		.portrait-frame {
+			min-height: 15rem;
+			margin-top: -1rem;
+		}
+
+		.portrait-frame img {
+			width: 136vw;
+			margin-right: -38vw;
+		}
+
+		.hero-metrics {
+			border-radius: 18px;
+		}
+
+		.hero-metrics div {
+			min-height: auto;
+		}
+
+		.about-grid article,
+		.entity-section > div {
+			border-radius: 18px;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.hero-actions a {
+			transition-duration: 0.01ms !important;
+		}
+
+		.hero-actions a:hover,
+		.hero-actions a:focus-visible {
+			transform: none;
+		}
+	}
+</style>
