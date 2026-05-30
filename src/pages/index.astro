@@ -105,30 +105,33 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 			.terminal-shell::before {
 				content: '';
 				position: absolute;
-				inset: -2.8rem -4rem -3.4rem;
-				z-index: -2;
+				inset: -3.2rem -4.6rem -3.8rem;
+				z-index: 0;
 				background:
-					radial-gradient(ellipse at 28% 68%, rgba(175, 157, 255, 0.24), transparent 48%),
-					radial-gradient(ellipse at 70% 64%, rgba(203, 225, 255, 0.22), transparent 52%),
-					radial-gradient(ellipse at 50% 38%, rgba(255, 255, 255, 0.72), transparent 56%);
-				filter: blur(20px);
-				opacity: 0.78;
+					radial-gradient(ellipse at 24% 72%, rgba(147, 119, 255, 0.38), transparent 46%),
+					radial-gradient(ellipse at 76% 70%, rgba(165, 205, 255, 0.34), transparent 50%),
+					radial-gradient(ellipse at 50% 52%, rgba(255, 255, 255, 0.78), transparent 57%);
+				filter: blur(22px) saturate(1.08);
+				opacity: 0.9;
 				pointer-events: none;
 				transform: translate3d(-1.2rem, 0.25rem, 0) scale(0.98);
-				animation: terminalGlow 9s ease-in-out infinite alternate;
+				animation: terminalGlow 7.5s ease-in-out infinite alternate;
 			}
 
 			.terminal-shell::after {
 				content: '';
 				position: absolute;
 				inset: -1px;
-				z-index: -1;
+				z-index: 1;
 				border-radius: 1.35rem;
 				background: linear-gradient(145deg, rgba(255, 255, 255, 0.48), rgba(0, 0, 0, 0.28));
 				filter: blur(0.4px);
+				pointer-events: none;
 			}
 
 			.terminal {
+				position: relative;
+				z-index: 2;
 				height: clamp(23rem, 30vw, 25.5rem);
 				overflow: hidden;
 				border: 1px solid rgba(255, 255, 255, 0.16);
@@ -530,18 +533,18 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
 			@keyframes terminalGlow {
 				0% {
-					opacity: 0.58;
-					transform: translate3d(-1.4rem, 0.45rem, 0) scale(0.98);
+					opacity: 0.72;
+					transform: translate3d(-1.8rem, 0.65rem, 0) scale(0.98);
 				}
 
 				48% {
-					opacity: 0.84;
-					transform: translate3d(0.9rem, -0.2rem, 0) scale(1.02);
+					opacity: 1;
+					transform: translate3d(1.15rem, -0.35rem, 0) scale(1.04);
 				}
 
 				100% {
-					opacity: 0.68;
-					transform: translate3d(1.25rem, 0.35rem, 0) scale(1);
+					opacity: 0.82;
+					transform: translate3d(1.65rem, 0.5rem, 0) scale(1);
 				}
 			}
 
