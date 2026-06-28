@@ -72,8 +72,21 @@ const checks = [
 				'Dual-color_bar_chart_202603222343.jpeg',
 				'Pie_chart_with_202603222343.jpeg',
 				'Evidence still needed',
+				'Benchmark impact',
+				'Edge cases where PromptTriage mattered most',
+				'Format and documentation status',
+				'href="/downloads/prompttriage-case-study.pdf"',
+				'+13.9%',
+				'86.7%',
 			].every((token) => page.includes(token)) && !page.includes('NextAuth');
 		},
+	},
+	{
+		name: 'PromptTriage PDF download is generated and linked',
+		pass: () =>
+			exists('public/downloads/prompttriage-case-study.pdf') &&
+			exists('scripts/generate-prompttriage-case-study-pdf.py') &&
+			read('src/pages/case-studies/prompttriage.astro').includes('/downloads/prompttriage-case-study.pdf'),
 	},
 	{
 		name: 'PromptTriage architecture SVG keeps diagram labels readable',
